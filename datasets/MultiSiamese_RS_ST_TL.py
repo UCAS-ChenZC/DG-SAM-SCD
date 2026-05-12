@@ -14,7 +14,7 @@ from osgeo import gdal
 import numpy as np
 import random
 from PIL import Image
-def read_image(image_path, drop_nir=True):
+def read_image(image_path, drop_nir=False):  #   True
     """
     高效读取单波段灰度图、RGB影像或四波段遥感影像（RGB+NIR）。
 
@@ -132,20 +132,20 @@ ST_COLORMAP = [[255, 255, 255],[0, 0, 0],[255, 211, 127],[255, 0, 0],[255, 115, 
 ST_CLASSES = ['nochange', 'Road', 'Low building', 'High building', 'ArableLand', 'unknown', 'Woodland', 'Grassland', 'water', 'lake', 'structure', 'excavation', 'bare']
 
 #含NIR版本的均值和标准差：
-# MEAN_A = np.array([89.147606, 75.60075, 75.206795, 76.10553])
-# STD_A = np.array([39.584747, 35.20891, 35.645096, 37.21572])
-# MEAN_B = np.array([69.99051, 57.549652, 59.85536, 62.881676])
-# STD_B = np.array([39.687336, 35.002705, 33.52335, 32.46179])
-# MEAN_C = np.array([56.94247, 51.62498, 55.48882, 55.334343])
-# STD_C = np.array([39.50115, 34.213947, 34.078976, 33.744305])
+MEAN_A = np.array([89.147606, 75.60075, 75.206795, 76.10553])
+STD_A = np.array([39.584747, 35.20891, 35.645096, 37.21572])
+MEAN_B = np.array([69.99051, 57.549652, 59.85536, 62.881676])
+STD_B = np.array([39.687336, 35.002705, 33.52335, 32.46179])
+MEAN_C = np.array([56.94247, 51.62498, 55.48882, 55.334343])
+STD_C = np.array([39.50115, 34.213947, 34.078976, 33.744305])
 
 #无NIR版本的均值和标准差：
-MEAN_A = np.array([89.147606, 75.60075, 75.206795], dtype=np.float32)
-STD_A  = np.array([39.584747, 35.20891, 35.645096], dtype=np.float32)
-MEAN_B = np.array([69.99051, 57.549652, 59.85536], dtype=np.float32)
-STD_B  = np.array([39.687336, 35.002705, 33.52335], dtype=np.float32)
-MEAN_C = np.array([56.94247, 51.62498, 55.48882], dtype=np.float32)
-STD_C  = np.array([39.50115, 34.213947, 34.078976], dtype=np.float32)
+# MEAN_A = np.array([89.147606, 75.60075, 75.206795], dtype=np.float32)
+# STD_A  = np.array([39.584747, 35.20891, 35.645096], dtype=np.float32)
+# MEAN_B = np.array([69.99051, 57.549652, 59.85536], dtype=np.float32)
+# STD_B  = np.array([39.687336, 35.002705, 33.52335], dtype=np.float32)
+# MEAN_C = np.array([56.94247, 51.62498, 55.48882], dtype=np.float32)
+# STD_C  = np.array([39.50115, 34.213947, 34.078976], dtype=np.float32)
 # root = '/media/lenovo/课题研究/博士小论文数据/长时序变化检测/Long-term-SCD/wusu512_process/debug_data'
 root = '/home/solid/CD/datasets/SCD_data/GSTM/WUSU_data'
 
